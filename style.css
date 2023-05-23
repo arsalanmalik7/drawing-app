@@ -53,6 +53,8 @@
     border-right: 2px solid rgb(255, 255, 255);
     margin-top: 0.8rem;
     margin-left: 0.8rem;
+    justify-content: space-evenly;
+
 }
 
 
