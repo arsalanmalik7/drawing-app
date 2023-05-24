@@ -91,7 +91,7 @@ function createTextBox() {
     textBox.placeholder = 'Enter text';
     textBox.style.position = 'absolute';
     textBox.style.top = '10px';
-    textBox.style.left = '10px';
+    textBox.style.left = '1150px';
 
     // Append the text box to the body or a container element
     document.body.appendChild(textBox);
