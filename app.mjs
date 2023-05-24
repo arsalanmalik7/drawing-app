@@ -63,10 +63,6 @@ toolBtn.forEach(btn => {
         console.log(selectedTool);
     })
 });
-let square = document.querySelector("#square");
-square.addEventListener('click', () => {
-    isDrawing = true;
-})
 
 function stopDrawing(event) {
     isDrawing = false;
@@ -90,6 +86,8 @@ function createTextBox() {
     // Create the text box input element
     textBox = document.createElement('input');
     textBox.type = 'text';
+    textBox.cols = '20';
+    textBox.rows = '4';
     textBox.placeholder = 'Enter text';
     textBox.style.position = 'absolute';
     textBox.style.top = '10px';
@@ -106,14 +104,15 @@ function createTextBox() {
 function handleTextInput() {
     if (textBox) {
         // Clear the canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let colorPickers = document.querySelector(".colors").value;
 
         // Set the font properties
         ctx.font = '24px Arial';
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = colorPickers;
 
         // Draw the text on the canvas
-        ctx.fillText(textBox.value, 50, 50);
+        ctx.fillText(textBox.value, 100, 100);
     }
 }
 
@@ -141,10 +140,6 @@ function handleImageUpload(e) {
     reader.readAsDataURL(e.target.files[0]);
 }
 
-
-
-
-
 // clear canvas
 let clearBoard = document.querySelector("#clearBoard");
 clearBoard.addEventListener('click', function dontRepeat() {
@@ -153,8 +148,24 @@ clearBoard.addEventListener('click', function dontRepeat() {
     ctx.strokeStyle = 'white';
     ctx.lineWidth = 0;
 })
+
 canvas.addEventListener("mouseover", function () {
-    canvas.style.cursor = "crosshair";
+    toolBtn = document.querySelectorAll(".tool");
+    toolBtn.forEach(btn => {
+        btn.addEventListener('click', () => {
+            selectedTool = btn.id;
+            console.log(selectedTool);
+        })
+
+    })
+    if (selectedTool === 'eraser') {
+
+        canvas.style.cursor = "cell"
+
+    } else {
+        canvas.style.cursor = "crosshair";
+
+    }
 });
 
 
