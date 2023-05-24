@@ -104,7 +104,7 @@ function createTextBox() {
 function handleTextInput() {
     if (textBox) {
         // Clear the canvas
-        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(10, 50, canvas.width, canvas.height);
         let colorPickers = document.querySelector(".colors").value;
 
         // Set the font properties
